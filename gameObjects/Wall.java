@@ -7,7 +7,6 @@ import utils.DrawingInformation;
 
 public class Wall extends Drawable {
 
-
     public Wall(Coordinates coords) {
         super(coords);
     }

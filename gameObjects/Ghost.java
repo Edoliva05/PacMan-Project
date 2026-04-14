@@ -39,7 +39,9 @@ public class Ghost extends Drawable {
     public void update() {
         //genero un numero randomico in base a quante direzioni sono contenute nell'ArrayList e salvo il una variabile la direzione uscita in modo randomico
         Random rand = new Random();
-        Direction randomDirection = availDirections.get(rand.nextInt(availDirections.size()));  //sortegio randomicamente una tra le direzioni disponibili in quel momento
+
+        //sortegio randomicamente una tra le direzioni disponibili in quel momento
+        Direction randomDirection = availDirections.get(rand.nextInt(availDirections.size()));  
 
         if(randomDirection != Direction.getOpposite(lastDirection)){
             //voglio che la direzione uscita sia diversa dalla direzione opposta alla precedente, senno torna indietro
@@ -58,17 +60,18 @@ public class Ghost extends Drawable {
     }
     
     public void resetPosition() {
-        coordinates = this.initialPosition;
+        coordinates = this.initialPosition;  
     }
 
     @Override
     public DrawingInformation draw() {
         
-        //creo uno switch che in base al numero uscito genera un diverso colore nelle sfumature dell'azzurro 
+        //faccio uno switch che in base al numero uscito genera un diverso colore nelle sfumature dell'azzurro 
         //per dare l'idea che i fantasmi stiano lampeggiando
         
+        //numero casuale da 1 a 2, ogni numero ha una sfumatura diversa
         Random rand = new Random();
-        int randomNum = rand.nextInt(4) + 1; //numero casuale da 1 a 4, ogni numero ha una sfumatura diversa
+        int randomNum = rand.nextInt(2) + 1; 
 
         switch(randomNum){
 
@@ -77,12 +80,6 @@ public class Ghost extends Drawable {
             }
             case 2 -> {
                 return new DrawingInformation('G', new Color(30, 161, 235)); 
-            }
-            case 3 -> {
-                return new DrawingInformation('G', new Color(0, 135, 215)); 
-            }
-            case 4 -> {
-                return new DrawingInformation('G', new Color(60, 211, 255)); 
             }
             default -> {
                 return new DrawingInformation('G', new Color(0, 191, 255));
